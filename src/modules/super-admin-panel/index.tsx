@@ -8,8 +8,8 @@ import {
 import { Button, Layout, Menu, Popconfirm, theme } from "antd";
 import { NavLink, useLocation, Outlet, useNavigate } from "react-router-dom";
 import { adminRights } from "../../router/routes"
-// import { logout } from "../../utils/token-serviace/intex";
-import { useState } from "react";
+import { logout, getAccessTocen } from "../../utils/token-serviace";
+import { useState,useEffect } from "react";
 
 // import LogoOtu from "../../assets/otu-logo.png";
 // import LogoText from "../../assets/logo-text.png";
@@ -18,14 +18,26 @@ const { Header, Sider, Content } = Layout;
 const { Item } = Menu;
 
 const App = () => {
+  
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const getToken = getAccessTocen()
+  console.log(null === null);
 
-//   const handleLogout = () => {
-//     logout();
-//     navigate("/");
-//   };
+  
+
+  useEffect(() => {
+    if (getToken == null) {
+      navigate("/"); 
+    }
+  }, [getToken, navigate]);
+;
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
 
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -102,7 +114,7 @@ const App = () => {
 
           <Popconfirm
             title="Are you sure you want to logout?"
-            // onConfirm={handleLogout}
+            onConfirm={handleLogout}
             okText="Yes"
             cancelText="No"
             okButtonProps={{

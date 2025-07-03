@@ -1,16 +1,39 @@
 import { Input, Form, Button } from "antd"
+import { useLogin } from "../hooks/mutation"
+import { useNavigate } from "react-router-dom"
+
+import type { LoginInput } from "../types"
 
 const Index :React.FC = () =>{
+
+    const navigate = useNavigate()
+
+    const [form] = Form.useForm();
+
+  const { mutate  } = useLogin(() => {
+    
+    navigate("/super-admin-panel")  
+    
+  });
+
+  const onFinish = (values: LoginInput) => {
+    mutate(values);
+  };
+
+
     return(
-        <div>
+        <div className="w-full h-[100vh] flex justify-center items-center">
             <Form 
-            name="sign_in"
-            style={{
-                maxWidth:"600px",
-                width:"340px",
-                display: "flex",
-                flexDirection:"column"
-            }}
+                form={form}
+                name="sign_in"
+                onFinish={onFinish}
+
+                style={{
+                    maxWidth:"600px",
+                    width:"340px",
+                    display: "flex",
+                    flexDirection:"column"
+                }}
             
             >
                 <Form.Item
