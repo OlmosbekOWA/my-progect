@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom'
 import { StyleProvider } from '@ant-design/cssinjs';
+import { ToastContainer } from "react-toastify";
 import './App.css'
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
     <>
       <StyleProvider layer>
         <Outlet />
+        <ToastContainer />
       </StyleProvider>
     </>  
   )

@@ -1,5 +1,7 @@
 import axios from "axios";
-import { Navigate } from "react-router-dom";
+
+import { toast } from "react-toastify";
+
 
 
 
@@ -23,12 +25,24 @@ axiosInstance.interceptors.request.use(
 
 axiosInstance.interceptors.response.use(
   (response) => response,
+
   (error) => {
-    if (error.response?.status === 401 || error.response?.status === 403) {
+    console.log(error);
+    
+    const status = error.response?.status;
+
+    if (status === 401 || status === 403) {
       localStorage.removeItem("token");
-      window.location.href = "/login";
+      toast.error(`${error}`)
+      
+      
+      
+    } else {
+      // Umumiy xatolik
+      
     }
-    return Promise.reject(error);
+
+    return Promise.reject(error); // muhim!
   }
 );
 
