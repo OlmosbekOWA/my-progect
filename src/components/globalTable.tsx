@@ -1,4 +1,4 @@
-// components/GlobalTable/GlobalTable.tsx
+
 
 import React from "react";
 import { Table, Typography } from "antd";
@@ -13,13 +13,13 @@ const { Title } = Typography;
 
 type GlobalTableProps = {
   title?: string;
-  columns: ColumnsType<any>; // ✅ Ant Design tipidan foydalanildi
+  columns: ColumnsType<any>; 
   data: any[];
   rowKey?: string;
   loading?: boolean;
   total?: number;
   pageSize?: number;
-  onChange?: TableProps<any>["onChange"]; // ✅ to‘g‘ri onChange tipi
+  onChange?: TableProps<any>["onChange"]; 
   currentPage?: number;
 };
 
