@@ -63,20 +63,6 @@ const App = () => {
                 marginBottom: "0.5rem",  
             }}
         >
-  
-
-          {/* <img
-            src={LogoOtu}
-            alt="main-logo"
-            className="w-[30px] h-[30px] object-cover"
-          />
-          {!collapsed && (
-            <img
-              src={LogoText}
-              alt="logo-text"
-              className="object-contain w-[80px] h-[40px]"
-            />
-          )} */}
         </div>
 
         <Menu theme="dark" mode="inline" selectedKeys={[pathname]}>

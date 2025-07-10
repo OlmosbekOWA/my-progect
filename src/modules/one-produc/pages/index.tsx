@@ -3,10 +3,27 @@ import { useParams } from "react-router-dom";
 import { getItemFunc } from "../hooks/queries";
 import { Card, Descriptions, Divider, Typography, Image, Badge, Button } from "antd";
 import { useNavigate } from "react-router-dom";
+import EditItemModal from "./modal";
+import { useQueryClient } from "@tanstack/react-query";
+
+
+import { useState } from "react";
+import type { Item } from "../types";
 
 const { Title, Text } = Typography;
 
 const ProductDetailPage: React.FC = () => {
+  const queryClient = useQueryClient();
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedItem, setSelectedItem] = useState<Item | null>(null);
+
+  const loadItems = () => {
+    queryClient.invalidateQueries({ queryKey: ["items"] });
+  };
+
+
+
+  
   const navigate = useNavigate()
   const { id } = useParams<{ id: string }>();
   const itemId = Number(id);
@@ -17,6 +34,13 @@ const ProductDetailPage: React.FC = () => {
   if (isError || !data?.data) return <p></p>;
 
   const product = data.data;
+
+ 
+
+ 
+
+
+
 
   return (
     <div className="p-6 max-w-5xl mx-auto">
@@ -92,8 +116,24 @@ const ProductDetailPage: React.FC = () => {
             </Descriptions.Item>
           </Descriptions>
         </Card>
+        
       )}
+      
+       <Button style={{
+        marginTop: "40px"
+       }} onClick={() => { setSelectedItem(product); setIsModalVisible(true); }}>
+        Ma’lumotni tahrirlash
+      </Button>
+
+      <EditItemModal
+        visible={isModalVisible}
+        onCancel={() => setIsModalVisible(false)}
+        item={selectedItem}
+        onSave={loadItems}
+      />
+
     </div>
+
   );
 };
 

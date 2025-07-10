@@ -65,7 +65,6 @@ const ProductListPage: React.FC = () => {
           "-"
         ),
     }
-
     
   ];
 
