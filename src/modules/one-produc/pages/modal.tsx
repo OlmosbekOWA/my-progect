@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
   Modal, Form, Input, Button, Upload, message,
-  Row, Col, Divider, Space
+  Row, Col, Space
 } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import type { RcFile, UploadFile } from "antd/es/upload/interface";
