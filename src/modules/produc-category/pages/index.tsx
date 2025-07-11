@@ -1,37 +1,69 @@
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useCategoriesWithCount } from "../hooks/queries";
-import { Card, List, Typography, Spin } from "antd";
+import { GlobalTable } from "../../../components"; 
+import type { ColumnsType } from "antd/es/table";
+import type { CategoryWithCount } from "../types";
+import { Alert, Space, Tooltip, Button} from "antd";
+import { FiEye } from "react-icons/fi"
 
-const { Title } = Typography;
-
-const CategoryOverview: React.FC = () => {
+const CategoryTable: React.FC = () => {
+    const navigate = useNavigate()
   const { data, isLoading, error } = useCategoriesWithCount();
 
-  if (isLoading) {
-    return (
-      <div style={{ textAlign: "center", padding: 40 }}>
-        <Spin size="large" tip="Yuklanmoqda..." />
-      </div>
-    );
+  const handleView = (category: string | undefined) => {
+    navigate(`/super-admin-panel/${category}`)
   }
 
-  if (error) return <p>Xatolik yuz berdi</p>;
+  const columns: ColumnsType<CategoryWithCount> = [
+    {
+      title: "Kategoriya nomi",
+      dataIndex: "category",
+      key: "category",
+    },
+    {
+      title: "Mahsulotlar soni",
+      dataIndex: "count",
+      key: "count",
+      render: (count: number) => `${count} ta`,
+    },
+    {
+      title: "Mahsulotlar summasi",
+      dataIndex: "totalPrice",
+      key: "totalPrice",
+      render: (totalPrice: number) => `${totalPrice} $`,
+    },
+    {
+        title: "Amallar",
+        key: "action",
+        dataIndex: "action",
+        render: (_: any, record) => (
+        <Space size="middle">
+            <Tooltip title={`${record.category} mahsulotlarini ko‘rish`}>
+            <Button onClick={() => handleView(record.category.toString())}>
+                <FiEye size={18} />
+            </Button>
+            </Tooltip>
+        </Space>
+        ),
+    },
+  ];
 
+  if (error) {
+    return <Alert message="Xatolik yuz berdi" type="error" showIcon />;
+  }
+  
   return (
-    <Card
-      title={<Title level={4}>📦 Kategoriya bo‘yicha mahsulotlar soni</Title>}
-      style={{ maxWidth: 600, margin: "30px auto" }}
-    >
-      <List
-        dataSource={data}
-        renderItem={(item: { category: string; count: number }) => (
-          <List.Item>
-            <span style={{ fontWeight: 500 }}>{item.category}</span>
-            <span>{item.count} ta mahsulot</span>
-          </List.Item>
-        )}
-      />
-    </Card>
+    <GlobalTable
+      title="Kategoriya bo‘yicha mahsulotlar"
+      columns={columns}
+      data={data || []}
+      loading={isLoading}
+      total={data?.length}
+      pageSize={10}
+      currentPage={1}
+    />
   );
 };
 
-export default CategoryOverview;
+export default CategoryTable;
