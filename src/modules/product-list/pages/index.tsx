@@ -46,7 +46,7 @@ const ProductListPage: React.FC = () => {
     { title: "Brend", dataIndex: "brand", key: "brand" },
     { title: "Kategoriya", dataIndex: "category", key: "category" },
     { title: "Xotira", dataIndex: "storage", key: "storage" },
-    { title: "Narxi", dataIndex: "sellPrice", key: "sellPrice" },
+    { title: "Narxi", dataIndex: "sellPrice", key: "sellPrice", render: (totalPrice: number) => `${totalPrice} $` },
     { title: "Soni", dataIndex: "Quantity", key: "Quantity" },
     {
       title: "Action",

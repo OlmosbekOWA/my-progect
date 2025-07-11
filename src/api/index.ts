@@ -38,11 +38,11 @@ axiosInstance.interceptors.response.use(
       
       
     } else {
-      // Umumiy xatolik
+      
       
     }
 
-    return Promise.reject(error); // muhim!
+    return Promise.reject(error); 
   }
 );
 

@@ -5,6 +5,7 @@ import { Card, Descriptions, Divider, Typography, Image, Badge, Button } from "a
 import { useNavigate } from "react-router-dom";
 import EditItemModal from "./modal";
 import { useQueryClient } from "@tanstack/react-query";
+import { Loading } from "../../../components";
 
 
 import { useState } from "react";
@@ -28,12 +29,20 @@ const ProductDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const itemId = Number(id);
 
-  const { data, isError } = getItemFunc(itemId);
+  const { data, isError, isLoading } = getItemFunc(itemId);
 
   
   if (isError || !data?.data) return <p></p>;
+  if (isLoading) {
+    return (
+      <Loading />
+    );
+  }
 
   const product = data.data;
+  
+
+
 
  
 
