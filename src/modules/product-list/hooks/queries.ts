@@ -7,7 +7,7 @@ import type { ProductQueryParams } from "../types"
 
 export const useProducts = (params: ProductQueryParams) => {
   return useQuery<ProductResponse>({
-    queryKey: ["products", params], // Object holatida ham ishlaydi
+    queryKey: ["products", params], 
     queryFn: () => fetchProducts(params),
   });
 };

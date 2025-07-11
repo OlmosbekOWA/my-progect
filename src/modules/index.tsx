@@ -17,6 +17,9 @@ const ProducCategory = loadable(() => import("./produc-category/pages"), {
     fallback: <Loading />
 });
 
+const ProducListCategory = loadable(() => import("./list-category/pages"), {
+    fallback: <Loading />
+});
 const ProducBrends = loadable(() => import("./produc-brends/pages"), {
     fallback: <Loading />
 });
@@ -24,6 +27,8 @@ const ProducBrends = loadable(() => import("./produc-brends/pages"), {
 const OneStudent = loadable(() => import("./one-produc/pages"), {
     fallback: <Loading />
 });
+
+
 const NotFound = loadable(() => import("./not-found"));
 
 export {
@@ -33,5 +38,6 @@ export {
     ProducCategory,
     ProducBrends,
     OneStudent,
+    ProducListCategory,
     NotFound
 };

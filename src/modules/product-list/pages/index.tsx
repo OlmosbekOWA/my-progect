@@ -7,7 +7,7 @@ import { useProductQueryParams } from "../hooks/useProductQueryParams";
 import { useNavigate } from "react-router-dom";
 import type { ColumnsType } from "antd/es/table";
 
-const ProductListPage: React.FC = () => {
+const Index: React.FC = () => {
   const navigate = useNavigate()
 
   const {
@@ -19,7 +19,7 @@ const ProductListPage: React.FC = () => {
   } = useProductQueryParams();
 
   const handleView = (id: number | undefined) => {
-    navigate(`/super-admin-panel/${id}`)
+    navigate(`/super-admin-panel/item/${id}`)
   }
 
   const { data, isLoading, isError } = useProducts({ page, name: searchName });
@@ -98,4 +98,4 @@ const ProductListPage: React.FC = () => {
   );
 };
 
-export default ProductListPage;
+export default Index;

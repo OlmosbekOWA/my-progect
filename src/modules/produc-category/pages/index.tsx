@@ -12,7 +12,7 @@ const CategoryTable: React.FC = () => {
   const { data, isLoading, error } = useCategoriesWithCount();
 
   const handleView = (category: string | undefined) => {
-    navigate(`/super-admin-panel/${category}`)
+    navigate(`/super-admin-panel/category/${category}`);
   }
 
   const columns: ColumnsType<CategoryWithCount> = [
@@ -52,7 +52,7 @@ const CategoryTable: React.FC = () => {
   if (error) {
     return <Alert message="Xatolik yuz berdi" type="error" showIcon />;
   }
-  
+
   return (
     <GlobalTable
       title="Kategoriya bo‘yicha mahsulotlar"

@@ -1,25 +1,18 @@
-
-
 import React from "react";
 import { Table, Typography } from "antd";
-import type {
-  ColumnsType,
-  
-  TableProps,
-} from "antd/es/table";
-
+import type { ColumnsType, TableProps } from "antd/es/table";
 
 const { Title } = Typography;
 
 type GlobalTableProps = {
   title?: string;
-  columns: ColumnsType<any>; 
+  columns: ColumnsType<any>;
   data: any[];
   rowKey?: string;
   loading?: boolean;
   total?: number;
   pageSize?: number;
-  onChange?: TableProps<any>["onChange"]; 
+  onChange?: TableProps<any>["onChange"];
   currentPage?: number;
 };
 
@@ -63,11 +56,3 @@ const GlobalTable: React.FC<GlobalTableProps> = ({
 };
 
 export default GlobalTable;
-
-
-
-
-
-
-
-
