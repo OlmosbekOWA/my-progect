@@ -1,8 +1,8 @@
 import { Input, Form, Button, Typography } from "antd";
 import { useLogin } from "../hooks/mutation";
 import { useNavigate } from "react-router-dom";
-
 import type { LoginInput } from "../types";
+
 
 const { Title } = Typography;
 
@@ -10,13 +10,29 @@ const Index: React.FC = () => {
   const navigate = useNavigate();
   const [form] = Form.useForm();
 
-  const { mutate } = useLogin(() => {
-    navigate("/super-admin-panel");
-  });
+  
 
-  const onFinish = (values: LoginInput) => {
-    mutate(values);
-  };
+  const { mutate, isPending } = useLogin(
+  () => {
+    navigate("/super-admin-panel");
+  },
+  () => {
+    form.setFields([
+      {
+        name: "username",
+        errors: ["Login yoki parol noto‘g‘ri"],
+      },
+      {
+        name: "password",
+        errors: [""],
+      },
+    ]);
+  }
+);
+
+const onFinish = (values: LoginInput) => {
+  mutate(values);
+};
 
   return (
     <div className="w-full h-screen flex justify-center items-center bg-gray-100 px-4">
@@ -32,29 +48,28 @@ const Index: React.FC = () => {
           layout="vertical"
         >
           <Form.Item
-  label="Username"
-  name="username"
-  rules={[{ required: true, message: "Please enter your username" }]}
->
-  <Input
-    size="large"
-    placeholder="Enter username"
-    className="rounded-md"
-  />
-            </Form.Item>
+            label="Username"
+            name="username"
+            rules={[{ required: true, message: "Please enter your username" }]}
+          >
+            <Input
+              size="large"
+              placeholder="Enter username"
+              className="rounded-md"
+            />
+          </Form.Item>
 
-           <Form.Item
-             label="Password"
-             name="password"
-             rules={[{ required: true, message: "Please enter your password" }]}
-           >
-             <Input.Password
-               size="large"
-               placeholder="Enter password"
-               className="rounded-md"
-             />
-           </Form.Item>
-
+          <Form.Item
+            label="Password"
+            name="password"
+            rules={[{ required: true, message: "Please enter your password" }]}
+          >
+            <Input.Password
+              size="large"
+              placeholder="Enter password"
+              className="rounded-md"
+            />
+          </Form.Item>
 
           <Form.Item>
             <Button
@@ -62,6 +77,7 @@ const Index: React.FC = () => {
               htmlType="submit"
               block
               size="large"
+              loading={isPending}
               className="bg-[#050556] hover:bg-[#1e1e88] text-white font-semibold rounded-md mt-2"
             >
               Sign In
