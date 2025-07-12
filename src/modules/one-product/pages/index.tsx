@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import EditItemModal from "./modal";
 import { useQueryClient } from "@tanstack/react-query";
 import { Loading } from "../../../components";
+import { AiTwotoneEdit } from "react-icons/ai";
 
 
 import { useState } from "react";
@@ -40,21 +41,15 @@ const ProductDetailPage: React.FC = () => {
   }
 
   const product = data.data;
-  
-
-
-
- 
-
- 
-
-
-
-
   return (
     <div className="p-6 max-w-5xl mx-auto">
       <div className="flex justify-between items-center mb-4">
         <Title level={2}>{product.name}</Title>
+        <Button 
+          onClick={() => { setSelectedItem(product); setIsModalVisible(true); }}>
+            <AiTwotoneEdit />
+            Ma’lumotni tahrirlash
+        </Button>
         <Button type="primary" onClick={() => navigate(-1)}>
             Orqaga
         </Button>
@@ -128,11 +123,7 @@ const ProductDetailPage: React.FC = () => {
         
       )}
       
-       <Button style={{
-        marginTop: "40px"
-       }} onClick={() => { setSelectedItem(product); setIsModalVisible(true); }}>
-        Ma’lumotni tahrirlash
-      </Button>
+       
 
       <EditItemModal
         visible={isModalVisible}
