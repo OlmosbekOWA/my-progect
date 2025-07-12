@@ -13,18 +13,18 @@ const ProducList = loadable(() => import("./product-list/pages"), {
     fallback: <Loading />
 });
 
-const ProducCategory = loadable(() => import("./produc-category/pages"), {
+const ProducCategory = loadable(() => import("./product-category/pages"), {
     fallback: <Loading />
 });
 
 const ProducListCategory = loadable(() => import("./list-category/pages"), {
     fallback: <Loading />
 });
-const ProducBrends = loadable(() => import("./produc-brends/pages"), {
+const ProducBrends = loadable(() => import("./product-brends/pages"), {
     fallback: <Loading />
 });
 
-const OneStudent = loadable(() => import("./one-produc/pages"), {
+const OneStudent = loadable(() => import("./one-product/pages"), {
     fallback: <Loading />
 });
 
