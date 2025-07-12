@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useListCategory } from "../hooks/queries";
-import { Image, Input, Tooltip, Button } from "antd";
+import { Image, Input, Tooltip, Button, Popconfirm } from "antd";
 import type { ColumnsType, TableProps } from "antd/es/table";
 import { FiEye } from "react-icons/fi";
 import { GlobalTable } from "../../../components";
+import { MdDeleteOutline } from "react-icons/md";
+import { useDeleteItem } from "../hooks/mutations";
 
 const ProducListCategory: React.FC = () => {
   const { category } = useParams<{ category?: string }>();
@@ -17,6 +19,8 @@ const ProducListCategory: React.FC = () => {
     page,
     name: searchTerm, 
   });
+  
+  const { mutate: deleteItem, isPending } = useDeleteItem();
 
   
   useEffect(() => {
@@ -73,6 +77,31 @@ const ProducListCategory: React.FC = () => {
         </Tooltip>
       ),
     },
+    {
+      title: "O'chirish",
+      render: (_: any, record: any) => (
+        <Popconfirm
+          title="Haqiqatan ham o‘chirmoqchimisiz?"
+          onConfirm={() => deleteItem(record.id)}
+          okText="Ha"
+          cancelText="Yo‘q"
+          okButtonProps={{ style: { backgroundColor: "red", borderColor: "red" } }}
+        >
+          <Tooltip title="Mahsulotni o'chirish">
+            <Button
+              disabled={isPending}
+              style={{
+                border: "none",
+                outline: "none",
+                backgroundColor: "transparent",
+              }}
+            >
+              <MdDeleteOutline size={24} color="red" />
+            </Button>
+          </Tooltip>
+        </Popconfirm>
+      ),
+    }
   ];
 
 
