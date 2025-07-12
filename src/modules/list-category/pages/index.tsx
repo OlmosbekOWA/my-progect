@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useListCategory } from "../hooks/queries";
-import { Image, Input, Space, Tooltip, Button } from "antd";
+import { Image, Input, Tooltip, Button } from "antd";
 import type { ColumnsType, TableProps } from "antd/es/table";
 import { FiEye } from "react-icons/fi";
 import { GlobalTable } from "../../../components";
@@ -12,7 +12,7 @@ const ProducListCategory: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
-  const { data, isLoading, error, refetch } = useListCategory({
+  const { data, isLoading, refetch } = useListCategory({
     category,
     page,
     name: searchTerm, 
