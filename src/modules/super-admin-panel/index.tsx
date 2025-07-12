@@ -11,8 +11,7 @@ import { adminRights } from "../../router/routes"
 import { logout, getAccessTocen } from "../../utils/token-serviace";
 import { useState,useEffect } from "react";
 
-// import LogoOtu from "../../assets/otu-logo.png";
-// import LogoText from "../../assets/logo-text.png";
+
 
 const { Header, Sider, Content } = Layout;
 const { Item } = Menu;
