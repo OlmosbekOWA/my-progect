@@ -37,12 +37,16 @@ const GlobalTable: React.FC<GlobalTableProps> = ({
         rowKey={rowKey}
         loading={loading}
         onChange={onChange}
-        pagination={{
-          current: currentPage,
-          pageSize,
-          total,
-          showSizeChanger: false,
-        }}
+        pagination={
+          (total ?? data.length) > 10
+            ? {
+                current: currentPage,
+                pageSize,
+                total,
+                showSizeChanger: false,
+              }
+            : false
+        }
         bordered
       />
 
