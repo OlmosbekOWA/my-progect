@@ -15,21 +15,21 @@ import {
 export const adminRights = [
   {
     path: "/super-admin-panel",
-    label: "Produc-list",
+    label: "Product-list",
     element: <ProducList />,
     icon: <AiFillDropboxCircle style={{ fontSize: "22px" }} />,
     showInSidebar: true,
   },
   {
     path: "/super-admin-panel/produc-category",
-    label: "Produc-category",
+    label: "Product-category",
     element: <ProducCategory />,
     icon: <AiFillAndroid style={{ fontSize: "22px" }} />,
     showInSidebar: true,
   },
   {
     path: "/super-admin-panel/produc-brends",
-    label: "Produc-brends",
+    label: "Product-brends",
     element: <ProducBrends />,
     icon: <AiFillSlackSquare style={{ fontSize: "22px" }} />,
     showInSidebar: true,
