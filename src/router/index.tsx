@@ -30,7 +30,6 @@ const Index = () => {
           <Route path="item/:id" element={<OneStudent />} />
           <Route path="category/:category" element={<ProducListCategory />} />
         </Route>
-
         <Route path="*" element={<NotFound />} />
       </Route>
     )

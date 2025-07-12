@@ -19,6 +19,7 @@ export const adminRights = [
     element: <ProducList />,
     icon: <AiFillDropboxCircle style={{ fontSize: "22px" }} />,
     showInSidebar: true,
+    disabled: false, 
   },
   {
     path: "/super-admin-panel/produc-category",
@@ -26,6 +27,7 @@ export const adminRights = [
     element: <ProducCategory />,
     icon: <AiFillAndroid style={{ fontSize: "22px" }} />,
     showInSidebar: true,
+    disabled: false, 
   },
   {
     path: "/super-admin-panel/produc-brends",
@@ -33,16 +35,19 @@ export const adminRights = [
     element: <ProducBrends />,
     icon: <AiFillSlackSquare style={{ fontSize: "22px" }} />,
     showInSidebar: true,
+    disabled: false, 
   },
   {
     path: "/super-admin-panel/item/:id",
     element: <OneStudent />,
     showInSidebar: false,
+    disabled: true, 
   },
 
   {
     path: "/super-admin-panel/category/:category",
     element: <ProducListCategory />,
     showInSidebar: false,
+    disabled: true, 
   },
 ];

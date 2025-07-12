@@ -24,8 +24,6 @@ const App = () => {
   const getToken = getAccessTocen()
   console.log(null === null);
 
-  
-
   useEffect(() => {
     if (getToken == null) {
       navigate("/"); 
@@ -63,16 +61,38 @@ const App = () => {
             }}
         >
         </div>
-
         <Menu theme="dark" mode="inline" selectedKeys={[pathname]}>
-          {adminRights?.map((item) => (
-            <Item key={item.path} icon={item.icon}>
-              <NavLink to={item.path} style={{ fontSize: "18px", display: "flex"}}>
-                {item.label}
-              </NavLink>
-            </Item>
-          ))}
+          {adminRights
+            .filter((item) => item.showInSidebar) 
+            .map((item) => (
+              <Item
+                key={item.path}
+                icon={item.icon}
+                disabled={item.disabled} 
+                style={{
+                  opacity: item.disabled ? 0.5 : 1,
+                  pointerEvents: item.disabled ? "none" : "auto",
+                  cursor: item.disabled ? "not-allowed" : "pointer",
+                }}
+              >
+                <NavLink
+                  to={item.disabled ? "#" : item.path}
+                  style={{
+                    fontSize: "18px",
+                    display: "flex",
+                    pointerEvents: item.disabled ? "none" : "auto",
+                    color: item.disabled ? "#aaa" : "inherit",
+                  }}
+                  onClick={(e) => {
+                    if (item.disabled) e.preventDefault();
+                  }}
+                >
+                  {item.label}
+                </NavLink>
+              </Item>
+            ))}
         </Menu>
+
       </Sider>
 
       <Layout>

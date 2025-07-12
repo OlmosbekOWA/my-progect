@@ -78,7 +78,7 @@ const ProducListCategory: React.FC = () => {
 
   return (
     <div className="p-6">
-      <div className="flex items-center gap-4 mb-4">
+      <div className="flex items-center gap-4 mb-4 justify-between mr-7">
         <Input
           placeholder="Mahsulot nomi"
           allowClear
@@ -89,6 +89,10 @@ const ProducListCategory: React.FC = () => {
           }}
           style={{ width: 300 }}
         />
+        <Button type="primary" onClick={() => navigate(-1)}>
+          Orqaga
+        </Button>
+
       </div>
 
       <GlobalTable
