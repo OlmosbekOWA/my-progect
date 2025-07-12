@@ -8,7 +8,7 @@ import type { ProductQueryParams } from "../types"
 export const useListCategory = (params: ProductQueryParams) => {
   return useQuery<ProductResponse>({
   queryKey: ["products", params],
-  queryFn: () => getListCategory(params), // endi to‘g‘ri
+  queryFn: () => getListCategory(params), 
 });
 
 };
