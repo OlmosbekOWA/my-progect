@@ -5,11 +5,13 @@ import {
 } from "react-icons/ai";
 
 import {
-  OneStudent,
+  OneProductCategors,
   ProducList,
   ProducCategory,
   ProducBrends,
   ProducListCategory,
+  ProductListBrands
+  
 } from "../modules";
 
 export const adminRights = [
@@ -39,7 +41,7 @@ export const adminRights = [
   },
   {
     path: "/super-admin-panel/item/:id",
-    element: <OneStudent />,
+    element: <OneProductCategors />,
     showInSidebar: false,
     disabled: true, 
   },
@@ -47,6 +49,12 @@ export const adminRights = [
   {
     path: "/super-admin-panel/category/:category",
     element: <ProducListCategory />,
+    showInSidebar: false,
+    disabled: true, 
+  },
+  {
+    path: "/super-admin-panel/brands/:brand",
+    element: <ProductListBrands />,
     showInSidebar: false,
     disabled: true, 
   },

@@ -24,9 +24,14 @@ const ProducBrends = loadable(() => import("./product-brends/pages"), {
     fallback: <Loading />
 });
 
-const OneStudent = loadable(() => import("./one-product/pages"), {
+const ProductListBrands = loadable(() => import("./list-brands/pages"), {
     fallback: <Loading />
 });
+
+const OneProductCategors = loadable(() => import("./one-product/pages"), {
+    fallback: <Loading />
+});
+
 
 
 const NotFound = loadable(() => import("./not-found"));
@@ -37,7 +42,8 @@ export {
     ProducList,
     ProducCategory,
     ProducBrends,
-    OneStudent,
+    OneProductCategors,
     ProducListCategory,
+    ProductListBrands,
     NotFound
 };

@@ -12,7 +12,7 @@ const CategoryTable: React.FC = () => {
   const { data, isLoading, error } = useBrendsWithCount();
 
   const handleView = (brend: string | undefined) => {
-    navigate(`/super-admin-panel/category/${brend}`);
+    navigate(`/super-admin-panel/brands/${brend}`);
   }
 
   const columns: ColumnsType<CategoryWithCount> = [
@@ -34,7 +34,7 @@ const CategoryTable: React.FC = () => {
       render: (totalPrice: number) => `${totalPrice} $`,
     },
     {
-        title: "Amallar",
+        title: "Ko'rish",
         key: "action",
         dataIndex: "action",
         render: (_: any, record) => (

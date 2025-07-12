@@ -13,8 +13,9 @@ import {
   ProducList,
   ProducCategory,
   ProducBrends,
-  OneStudent,
+  OneProductCategors,
   ProducListCategory,
+  ProductListBrands,
 } from "../modules";
 
 const Index = () => {
@@ -27,8 +28,9 @@ const Index = () => {
           <Route index element={<ProducList />} />
           <Route path="produc-category" element={<ProducCategory />} />
           <Route path="produc-brends" element={<ProducBrends />} />
-          <Route path="item/:id" element={<OneStudent />} />
+          <Route path="item/:id" element={<OneProductCategors />} />
           <Route path="category/:category" element={<ProducListCategory />} />
+          <Route path="brands/:brand" element={<ProductListBrands />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Route>
