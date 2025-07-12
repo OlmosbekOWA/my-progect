@@ -34,7 +34,7 @@ const CategoryTable: React.FC = () => {
       render: (totalPrice: number) => `${totalPrice} $`,
     },
     {
-        title: "Amallar",
+        title: "Ko'rish",
         key: "action",
         dataIndex: "action",
         render: (_: any, record) => (

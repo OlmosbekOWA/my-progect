@@ -1,11 +1,13 @@
 import React from "react";
 import { useProducts } from "../hooks/queries";
 import { GlobalTable } from "../../../components";
-import { Image, Input, Space, Tooltip, Button } from "antd";
+import { Image, Input, Space, Tooltip, Button, Popconfirm } from "antd";
 import { FiEye } from "react-icons/fi"
 import { useProductQueryParams } from "../hooks/useProductQueryParams";
 import { useNavigate } from "react-router-dom";
 import type { ColumnsType } from "antd/es/table";
+import { useDeleteItem } from "../hooks/mutations";
+import { MdDeleteOutline } from "react-icons/md";
 
 const Index: React.FC = () => {
   const navigate = useNavigate()
@@ -21,6 +23,7 @@ const Index: React.FC = () => {
   const handleView = (id: number | undefined) => {
     navigate(`/super-admin-panel/item/${id}`)
   }
+  const { mutate: deleteItem, isPending } = useDeleteItem();
 
   const { data, isLoading, isError } = useProducts({ page, name: searchName });
 
@@ -64,7 +67,33 @@ const Index: React.FC = () => {
         ) : (
           "-"
         ),
+    },
+    {
+      title: "O'chirish",
+      render: (_: any, record: any) => (
+        <Popconfirm
+          title="Haqiqatan ham o‘chirmoqchimisiz?"
+          onConfirm={() => deleteItem(record.id)}
+          okText="Ha"
+          cancelText="Yo‘q"
+          okButtonProps={{ style: { backgroundColor: "red", borderColor: "red" } }}
+        >
+          <Tooltip title="Mahsulotni o'chirish">
+            <Button
+              disabled={isPending}
+              style={{
+                border: "none",
+                outline: "none",
+                backgroundColor: "transparent",
+              }}
+            >
+              <MdDeleteOutline size={24} color="red" />
+            </Button>
+          </Tooltip>
+        </Popconfirm>
+      ),
     }
+    
     
   ];
 
