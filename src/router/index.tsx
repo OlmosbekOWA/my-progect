@@ -13,6 +13,7 @@ import {
   ProducList,
   ProducCategory,
   ProducBrends,
+  CreateItems,
   OneProductCategors,
   ProducListCategory,
   ProductListBrands,
@@ -28,6 +29,7 @@ const Index = () => {
           <Route index element={<ProducList />} />
           <Route path="produc-category" element={<ProducCategory />} />
           <Route path="produc-brends" element={<ProducBrends />} />
+          <Route path="create-product" element={<CreateItems />} />
           <Route path="item/:id" element={<OneProductCategors />} />
           <Route path="category/:category" element={<ProducListCategory />} />
           <Route path="brands/:brand" element={<ProductListBrands />} />

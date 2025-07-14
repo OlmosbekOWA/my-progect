@@ -24,6 +24,10 @@ const ProducBrends = loadable(() => import("./product-brends/pages"), {
     fallback: <Loading />
 });
 
+const CreateItems = loadable(() => import("./create-product/pages"), {
+    fallback: <Loading />
+});
+
 const ProductListBrands = loadable(() => import("./list-brands/pages"), {
     fallback: <Loading />
 });
@@ -42,6 +46,7 @@ export {
     ProducList,
     ProducCategory,
     ProducBrends,
+    CreateItems,
     OneProductCategors,
     ProducListCategory,
     ProductListBrands,

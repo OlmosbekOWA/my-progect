@@ -2,6 +2,7 @@ import {
   AiFillDropboxCircle,
   AiFillAndroid,
   AiFillSlackSquare,
+  AiOutlinePlusCircle
 } from "react-icons/ai";
 
 import {
@@ -9,6 +10,7 @@ import {
   ProducList,
   ProducCategory,
   ProducBrends,
+  CreateItems,
   ProducListCategory,
   ProductListBrands
   
@@ -36,6 +38,14 @@ export const adminRights = [
     label: "Product-brends",
     element: <ProducBrends />,
     icon: <AiFillSlackSquare style={{ fontSize: "22px" }} />,
+    showInSidebar: true,
+    disabled: false, 
+  },
+  {
+    path: "/super-admin-panel/create-product",
+    label: "Add-Product",
+    element: <CreateItems />,
+    icon: <AiOutlinePlusCircle style={{ fontSize: "22px" }} />,
     showInSidebar: true,
     disabled: false, 
   },
